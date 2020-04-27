@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
 import Customer from './components/Customer';
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 
 var customers=[
   {
@@ -31,23 +36,15 @@ var customers=[
 
 function App() {
   return (
-    <div>{
-      customers.map(c => {
-        return (
-          <Customer
-          key={c.id}
-          id={c.id}
-          image={c.image}
-          name={c.name}
-          birthday={c.birthday}
-          gender={c.gender}
-          job={c.job}
-          />
-          )
-        })
-      }
-   </div>
-  )}
+    <div>
+      <Table>
+        <TableBody>
+          {customers.map(c => {
+        return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />)})}
+        </TableBody>
+      </Table>
+  </div>
+  );}
         
 
 export default App;
