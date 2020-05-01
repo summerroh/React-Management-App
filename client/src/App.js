@@ -7,6 +7,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -17,6 +18,9 @@ const styles = theme => ({
   },
   table: {
     minWidth: 1080
+  },
+  progress: {
+    margin: theme.spacing(2)
   }
 })
 
@@ -53,7 +57,13 @@ class App extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.customers ? this.state.customers.map(c => {return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />)}): ""}
+            {this.state.customers ? this.state.customers.map(c => {return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job} />)}): 
+            <TableRow>
+            <TableCell colSpan="6" align="center">
+              <CircularProgress color="secondary" className={classes.progress} />
+            </TableCell>
+          </TableRow>
+          }
           </TableBody>
         </Table>
     </Paper>
